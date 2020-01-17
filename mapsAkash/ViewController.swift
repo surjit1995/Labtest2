@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  mapsAkash
-//
-//  Created by MacStudent on 2020-01-16.
-//  Copyright © 2020 MacStudent. All rights reserved.
-//
 
 import UIKit
 import CoreData
@@ -36,8 +29,12 @@ class ViewController: UIViewController,MKMapViewDelegate {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setPins()
+    }
     
-    func setPins() {
+    func setPins() {   // pins show krda map te
         
         var locValue:CLLocationCoordinate2D = CLLocationCoordinate2D()
         
@@ -76,12 +73,8 @@ class ViewController: UIViewController,MKMapViewDelegate {
         mapView.setRegion(coordinateRegion, animated: true)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setPins()
-    }
-    
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+   
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {  // pin nu select krn to bad jo annotation show hundi a 
        
            
            selectPin = view.annotation
@@ -113,14 +106,14 @@ class ViewController: UIViewController,MKMapViewDelegate {
            }
        }
        
-       @objc func annoBtnPressed(){
+       @objc func annoBtnPressed(){   // function call hunda jdo (i) nu clik krde a 
            self.view.layoutIfNeeded()
            
            if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Update") as? Update {
                       
                       
                       for i in 0..<self.locDataArray.count{
-                          if(self.locDataArray[i].mapSubTitle ==  ((selectPin?.subtitle)!)!) {
+                          if(self.locDataArray[i].mapSubTitle ==  ((selectPin?.subtitle)!)!) {  //compares sub title to select that information
                               self.locatonSingle = self.locDataArray[i]
                               break
                           }}
@@ -147,11 +140,11 @@ class ViewController: UIViewController,MKMapViewDelegate {
 //
 //       }
 //
-       func insertRecord(title:String, subTitle:String,latitude: Double,longitude: Double){
+       func insertRecord(title:String, subTitle:String,latitude: Double,longitude: Double){  //insert data into core data entity Location
            
            let location = Location(context: ViewController.managedContext)
               
-                    location.mapTitle = title
+                    location.mapTitle = title    // entity Location attributes
                     location.mapSubTitle = subTitle
                     location.mapLatutude = latitude
                     location.mapLongitude = longitude
