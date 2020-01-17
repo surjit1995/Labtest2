@@ -1,11 +1,4 @@
-//
-//  Location+CoreDataProperties.swift
-//  mapsAkash
-//
-//  Created by MacStudent on 2020-01-16.
-//  Copyright © 2020 MacStudent. All rights reserved.
-//
-//
+
 
 import Foundation
 import CoreData
@@ -17,6 +10,7 @@ extension Location {
         return NSFetchRequest<Location>(entityName: "Location")
     }
 
+    // attributes of location entity
     @NSManaged public var mapTitle: String?
     @NSManaged public var mapSubTitle: String?
     @NSManaged public var mapLatutude: Double
