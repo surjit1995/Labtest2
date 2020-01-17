@@ -1,10 +1,4 @@
-//
-//  CoreDataStack.swift
-//  mapsAkash
-//
-//  Created by MacStudent on 2020-01-16.
-//  Copyright © 2020 MacStudent. All rights reserved.
-//
+
 
 import Foundation
 import CoreData
@@ -18,7 +12,8 @@ final class CoreDataStack
         self.modelName = modelName
     }
     
-    lazy var managedContext: NSManagedObjectContext = {
+    // entry point required to access the rest of the stack is managedContext
+    lazy var managedContext: NSManagedObjectContext = {  // in-memory scratchpad for working with your managed objects
         return self.storeContainer.viewContext
       }()
 
