@@ -1,10 +1,3 @@
-//
-//  SceneDelegate.swift
-//  mapsAkash
-//
-//  Created by MacStudent on 2020-01-16.
-//  Copyright © 2020 MacStudent. All rights reserved.
-//
 
 import UIKit
 import CoreData
@@ -12,7 +5,8 @@ import CoreData
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    lazy var coreDataStack = CoreDataStack(modelName: "DataModel")
+    lazy var coreDataStack = CoreDataStack(modelName: "DataModel")  // creates core data stack object
+    // stack won’t be set up until the ﬁrst time you access the property
 
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -26,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
            return
         }
 
-        ViewController.managedContext = coreDataStack.managedContext
+        ViewController.managedContext = coreDataStack.managedContext     // pass the context from coredata stack to view controller
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
